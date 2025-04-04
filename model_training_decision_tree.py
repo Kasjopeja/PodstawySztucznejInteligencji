@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -45,3 +46,7 @@ submission = pd.DataFrame({
 })
 submission.to_csv("data/submission_decision_tree.csv", index=False)
 print("\nPlik submission_decision_tree.csv z predykcjami został zapisany w folderze 'data'.")
+
+# Zapisanie modelu do pliku
+joblib.dump(dt_model, "models/decision_tree_model.pkl")
+print("Model zapisany jako 'decision_tree_model.pkl'")

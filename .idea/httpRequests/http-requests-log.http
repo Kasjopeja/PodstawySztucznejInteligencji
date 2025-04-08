@@ -1,0 +1,50 @@
+POST http://127.0.0.1:8000/predict
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{}
+
+<> 2025-04-08T125408.200.json
+
+###
+
+POST http://127.0.0.1:8000/predict
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-04-08T125355.500.txt
+
+###
+
+POST http://127.0.0.1:8000/predict
+Content-Type: application/json
+Content-Length: 192
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "model": "random_forest",
+  "data": [
+    {
+      "Pclass": 1,
+      "Sex": 0,
+      "Age": 38.0,
+      "SibSp": 1,
+      "Parch": 0,
+      "Fare": 71.2833,
+      "Embarked": 0
+    }
+  ]
+}
+
+<> 2025-04-08T125146.200.json
+
+###
+

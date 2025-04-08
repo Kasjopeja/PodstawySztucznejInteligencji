@@ -1,0 +1,11 @@
+{
+  "predictions": {
+    "random_forest": [
+      1
+    ]
+  },
+  "used_models": [
+    "random_forest"
+  ],
+  "rows_predicted": 1
+}

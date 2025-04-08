@@ -3,7 +3,8 @@
 ## Model Regresji Logistycznej
 
 ![Zrzut ekranu 2025-04-03 214
-441.png](images/Zrzut%20ekranu%202025-04-03%20214441.png)
+441.png](image
+s/Zrzut%20ekranu%202025-04-03%20214441.png)
 
 Accuracy mówi nam, jak często model trafia z przewidywaniami w stosunku do wszystkich przykładów. U nas to 80%, więc spoko.
 
@@ -77,15 +78,47 @@ I jak porównamy z regresją to _support_ jest identyczny.
 
 Średnia „macro” traktuje obie klasy z równą wagą, co podkreśla lekko niższe wyniki dla przeżycia. Średnia ważona uwzględnia liczebność klas i finalnie daje podobny wynik do accuracy, czyli ok. 82%.
 
+## Model lasu losowego
 
-| Porównanie    | Regresja | Drzewo decyzjne |
-|---------------| ---- | ----------- |
-| Accuracy      | 80%  | 82%         |
-| Precision (0) | 82%  | 84%         |
-| Recall (0)    | 89%  | 88%         |
-| F1 (0)        | 0,85 | 0,86        |
-| Precision (1) | 80%  | 79%         |
-| Recall (1)    | 68%  | 72%         |
-| F1 (1)        | 73%  | 76%         |
-|               |    Model zakłada liniowe zależności, dobry przy mniejszych zbiorach  | Łatwiejsze do interpretacji (możliwość wizualizacji drzewa), ale może być podatne na overfitting            |
+![Zrzut ekranu 2025-04-08 131835.png](images/Zrzut%20ekranu%202025-04-08%20131835.png)
+
+W przypadku lasu losowego dokładność to 82%, więc podobnie jak drzewo decyzyjne, trochę lepiej niż regresja.
+
+![Zrzut ekranu 2025-04-08 131839.png](images/Zrzut%20ekranu%202025-04-08%20131839.png)
+
+Wiersz 1 (0, nie przeżył):
+
+97 → True Negatives (model poprawnie przewidział brak przeżycia)
+
+13 → False Positives (model błędnie przewidział przeżycie)
+
+Wiersz 2 (1, przeżył):
+
+18 → False Negatives (model błędnie przewidział brak przeżycia)
+
+51 → True Positives (model poprawnie przewidział przeżycie)
+
+![Zrzut ekranu 2025-04-08 131844.png](images/Zrzut%20ekranu%202025-04-08%20131844.png)
+
+Gdy model mówi, że ktoś nie przeżył to ma 84% racji i wykrywa 88% tych, którzy faktycznie nie przeżyli. 
+Zaś jak przezył to mamy 80% pewności i wykrywa 74% przypadków.
+
+Po F1-score widać, ze śmierci są dokładniejsze.
+
+Support jest identyczny: 110 przypadków śmierci i 69 przeżyć.
+
+![Zrzut ekranu 2025-04-08 131848.png](images/Zrzut%20ekranu%202025-04-08%20131848.png)
+
+Wszystkie trzy metryki wynoszą 0.82, podobnie jak accuracy, więc model jest dość zbalansowany.
+
+| Porównanie    | Regresja | Drzewo decyzjne | Las Losowy      |
+|---------------| ---- | ----------- |-----------------|
+| Accuracy      | 80%  | 82%         | 82%             |
+| Precision (0) | 82%  | 84%         | 84%             |
+| Recall (0)    | 89%  | 88%         | 88%             |
+| F1 (0)        | 0,85 | 0,86        | 0,86            |
+| Precision (1) | 80%  | 79%         | 79%             |
+| Recall (1)    | 68%  | 72%         | 72%             |
+| F1 (1)        | 73%  | 76%         | 76%             |
+|               |    Model zakłada liniowe zależności, dobry przy mniejszych zbiorach  | Łatwiejsze do interpretacji (możliwość wizualizacji drzewa), ale może być podatne na overfitting |Stabilny i dokładny model, dobrze radzi sobie z generalizacją dzięki łączeniu wielu drzew; mniej podatny na overfitting niż pojedyncze drzewo, ale trudniejszy do interpretacji.|
 

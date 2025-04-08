@@ -1,4 +1,4 @@
-# Wdrożenie modelów
+# Wdrożenie modeli
 
 Modele zostały wyeksportowane do plików <code> .pkl </code> i wykorzystane do utworzenia api.
 

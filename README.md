@@ -1,4 +1,4 @@
-# Cel:
+# Cel projektu:
 Celem projektu jest stworzenie modelu sztucznej inteligencji, który przewidzi, czy pasażer statku Titanic przeżyje katastrofę, na podstawie jego cech demograficznych i biletowych. Model ten będzie klasyfikował pasażerów jako "przeżył" (1) lub "nie przeżył" (0) na podstawie dostępnych danych.
 
 # Problem do rozwiązania:

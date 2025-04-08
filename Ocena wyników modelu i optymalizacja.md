@@ -2,9 +2,7 @@
 
 ## Model Regresji Logistycznej
 
-![Zrzut ekranu 2025-04-03 214
-441.png](image
-s/Zrzut%20ekranu%202025-04-03%20214441.png)
+![Zrzut ekranu 2025-04-03 214 441.png](image s/Zrzut%20ekranu%202025-04-03%20214441.png)
 
 Accuracy mówi nam, jak często model trafia z przewidywaniami w stosunku do wszystkich przykładów. U nas to 80%, więc spoko.
 

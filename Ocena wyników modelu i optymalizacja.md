@@ -109,14 +109,131 @@ Support jest identyczny: 110 przypadków śmierci i 69 przeżyć.
 
 Wszystkie trzy metryki wynoszą 0.82, podobnie jak accuracy, więc model jest dość zbalansowany.
 
-| Porównanie    | Regresja | Drzewo decyzjne | Las Losowy      |
-|---------------| ---- | ----------- |-----------------|
-| Accuracy      | 80%  | 82%         | 82%             |
-| Precision (0) | 82%  | 84%         | 84%             |
-| Recall (0)    | 89%  | 88%         | 88%             |
-| F1 (0)        | 0,85 | 0,86        | 0,86            |
-| Precision (1) | 80%  | 79%         | 79%             |
-| Recall (1)    | 68%  | 72%         | 72%             |
-| F1 (1)        | 73%  | 76%         | 76%             |
-|               |    Model zakłada liniowe zależności, dobry przy mniejszych zbiorach  | Łatwiejsze do interpretacji (możliwość wizualizacji drzewa), ale może być podatne na overfitting |Stabilny i dokładny model, dobrze radzi sobie z generalizacją dzięki łączeniu wielu drzew; mniej podatny na overfitting niż pojedyncze drzewo, ale trudniejszy do interpretacji.|
+| Porównanie    | Regresja                                                         | Drzewo decyzjne                                                                                  | Las Losowy                                                                                                                                                                       |
+|---------------|------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Accuracy      | 80%                                                              | 82%                                                                                              | 82%                                                                                                                                                                              |
+| Precision (0) | 82%                                                              | 84%                                                                                              | 84%                                                                                                                                                                              |
+| Recall (0)    | 89%                                                              | 88%                                                                                              | 88%                                                                                                                                                                              |
+| F1 (0)        | 0,85                                                             | 0,86                                                                                             | 0,86                                                                                                                                                                             |
+| Precision (1) | 80%                                                              | 79%                                                                                              | 79%                                                                                                                                                                              |
+| Recall (1)    | 68%                                                              | 72%                                                                                              | 72%                                                                                                                                                                              |
+| F1 (1)        | 0,73                                                             | 0,76                                                                                             | 0,76                                                                                                                                                                             |
+|               | Model zakłada liniowe zależności, dobry przy mniejszych zbiorach | Łatwiejsze do interpretacji (możliwość wizualizacji drzewa), ale może być podatne na overfitting | Stabilny i dokładny model, dobrze radzi sobie z generalizacją dzięki łączeniu wielu drzew; mniej podatny na overfitting niż pojedyncze drzewo, ale trudniejszy do interpretacji. |
 
+
+
+# Modele "Zoptymalizowane"
+
+## Model Regresji Logistycznej
+
+Do modelu regresji logistycznej dodano nowe hiperparametry do próby znalezienia najbardziej optymalnych w celu zoptymalizowania modelu: 
+
+**C -** siła regularyzacji
+
+**penalty -** typ regularyzacji
+
+**solver -** algorytm optymalizacji
+
+Otrzymane wyniki:
+
+![Zrzut ekranu 2025-04-09 170536.png](images/Zrzut%20ekranu%202025-04-09%20170536.png)
+
+![Zrzut ekranu 2025-04-09 170646.png](images/Zrzut%20ekranu%202025-04-09%20170646.png)
+
+Tabela porównawcza obu podejść:
+
+| Porównanie      | Regresja | Regresja zoptymalizowana |
+|-----------------|----------|--------------------------|
+| True Negatives  | 98       | 99                       |
+| False Positives | 12       | 11                       |
+| False Negatives | 23       | 26                       |
+| True Positives  | 46       | 43                       |
+| Accuracy        | 80%      | 79%                      |
+| Precision (0)   | 82%      | 79%                      |
+| Recall (0)      | 89%      | 90%                      |
+| F1 (0)          | 0,85     | 0,84                     |
+| Precision (1)   | 80%      | 80%                      |
+| Recall (1)      | 68%      | 62%                      |
+| F1 (1)          | 0,73     | 0,70                     |
+
+Jak więc widać próba zoptymalizowania trenowania modelu zwiększyła jedynie Recall dla oceniania zgonów.
+Można więc założyć, iż wcześniejsze podejście było zoptymalizowane.
+Dodatkowo różnica w macierzy konfuzji jest na tyle znikoma, iż nie można założyć znaczącej poprawy bądź pogorszenia w tym aspekcie.
+
+
+## Model drzewa decyzyjnego
+
+Do modelu drzewa decyzyjnego dodano nowe hiperparametry do próby znalezienia najbardziej optymalnych w celu zoptymalizowania modelu: 
+
+**max_depth -** maksymalna głębokość drzewa
+
+**criterion -** miara jakości podziału
+
+**min_samples_split -** minimalna liczba próbek wymagana do podzielenia węzła
+
+**min_samples_leaf -** minimalna liczba próbek w końcowym liściu drzewa
+
+Otrzymane wyniki:
+
+![Zrzut ekranu 2025-04-09 171451.png](images/Zrzut%20ekranu%202025-04-09%20171451.png)
+
+![Zrzut ekranu 2025-04-09 171516.png](images/Zrzut%20ekranu%202025-04-09%20171516.png)
+
+Tabela porównawcza obu podejść:
+
+| Porównanie      | Drzewo decyzyjne | Drzewo decyzyjne zoptymalizowane |
+|-----------------|------------------|----------------------------------|
+| True Negatives  | 97               | 101                              |
+| False Positives | 13               | 9                                |
+| False Negatives | 19               | 29                               |
+| True Positives  | 50               | 40                               |
+| Accuracy        | 82%              | 79%                              |
+| Precision (0)   | 84%              | 78%                              |
+| Recall (0)      | 88%              | 92%                              |
+| F1 (0)          | 0,86             | 0,84                             |
+| Precision (1)   | 79%              | 82%                              |
+| Recall (1)      | 72%              | 58%                              |
+| F1 (1)          | 0,76             | 0,68                             |
+
+Ponownie jak w przypadku regresji liniowej zmiany w prawie wszystkich metrykach pogoroszyły się.
+Można więc założyć, iż użyte wcześniej rozwiązanie było już optymalne.
+
+
+
+## Model lasu losowego
+
+Do modelu lasu losowego dodano nowe hiperparametry do próby znalezienia najbardziej optymalnych w celu zoptymalizowania modelu: 
+
+**n_estimators -** liczba drzew w lesie
+
+**max_depth -** maksymalna głębokość drzewa
+
+**min_samples_split -** minimalna liczba próbek wymagana do podzielenia węzła
+
+**min_samples_leaf -** minimalna liczba próbek w końcowym liściu drzewa
+
+Otrzymane wyniki:
+
+![Zrzut ekranu 2025-04-09 172640.png](images/Zrzut%20ekranu%202025-04-09%20172640.png)
+
+![Zrzut ekranu 2025-04-09 172717.png](images/Zrzut%20ekranu%202025-04-09%20172717.png)
+
+Tabela porównawcza obu podejść:
+
+| Porównanie      | Las losowy | Las losowy zoptymalizowany |
+|-----------------|------------|----------------------------|
+| True Negatives  | 97         | 101                        |
+| False Positives | 13         | 9                          |
+| False Negatives | 19         | 23                         |
+| True Positives  | 50         | 46                         |
+| Accuracy        | 82%        | 82%                        |
+| Precision (0)   | 84%        | 81%                        |
+| Recall (0)      | 88%        | 92%                        |
+| F1 (0)          | 0,86       | 0,86                       |
+| Precision (1)   | 79%        | 84%                        |
+| Recall (1)      | 72%        | 67%                        |
+| F1 (1)          | 0,76       | 0,74                       |
+
+Podobnie jak w poprzednich przykładach różnice są wręcz niezauważalne.
+Ten przykład natomiast przyniósł najowocniejsze poprawy w metrykach natomiast są one równoważone przez pogroszenia bądź brak zmian w innych.
+Można więc ponownie założyć, iż poprzednie rozwiązanie było optymalne.

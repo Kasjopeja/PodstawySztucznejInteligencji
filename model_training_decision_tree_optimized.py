@@ -30,7 +30,7 @@ grid_parameters = {
 dt_model = DecisionTreeClassifier(random_state=42)
 grid_search = GridSearchCV(dt_model, grid_parameters, cv=5, scoring="accuracy", n_jobs=-1, verbose=1)
 grid_search.fit(X_train, y_train)
-print(f"Najlepszy wynik w walidacji krzyżowym: {grid_search.best_params_}")
+print(f"Najlepszy wynik w walidacji krzyżowej: {grid_search.best_params_}")
 print(f"Najlepszy wynik (accuracy) w walidacji krzyżowej: {grid_search.best_score_}")
 
 best_dt = grid_search.best_estimator_

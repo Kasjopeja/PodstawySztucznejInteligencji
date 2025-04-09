@@ -2,7 +2,7 @@
 
 ## Model Regresji Logistycznej
 
-![Zrzut ekranu 2025-04-03 214 441.png](image s/Zrzut%20ekranu%202025-04-03%20214441.png)
+![Zrzut ekranu 2025-04-03 214441.png](images/Zrzut%20ekranu%202025-04-03%20214441.png)
 
 Accuracy mówi nam, jak często model trafia z przewidywaniami w stosunku do wszystkich przykładów. U nas to 80%, więc spoko.
 
@@ -68,7 +68,7 @@ Wiersz 2 (1, przeżył):
 Tu zaś mamy 84% pewności, żę pasażer nie żyje jak mówimy, że umarł (xD). Z czego 88% zostało poprawnie zaklasyfikowane.
 Z przeżył mamy 79% proces pewności i 72% jest zaklasyfikowana poprawnie. Więc ogólnie pewność mamy tą samą co przy regresji, ale poprawnych rozpoznań jest więcej.
 
-Po f1-score widzimy, że model jesy dokładniejszy dla 0.
+Po f1-score widzimy, że model jest dokładniejszy dla 0.
 
 I jak porównamy z regresją to _support_ jest identyczny.
 

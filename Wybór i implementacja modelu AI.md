@@ -5,7 +5,7 @@ W ramach analizy danych o pasażerach Titanica zbudowano i przetestowano trzy r�
 Dane zostały podzielone na zbiór treningowy i walidacyjny w proporcji 80/20.
 
 ---
-## Regredsja Logidtyczna
+## Regresja Logistyczna
 
 Regresja logistyczna to klasyczny model liniowy, który sprawdza się dobrze przy problemach binarnych – takich jak przewidywanie przeżycia (`Survived`). Działa szybko i dobrze interpretuje wpływ poszczególnych cech.
 

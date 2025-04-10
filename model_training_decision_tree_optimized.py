@@ -60,5 +60,5 @@ submission.to_csv("data/submission_decision_tree_optimized.csv", index=False)
 print("\nPlik submission_decision_tree_optimized.csv z predykcjami został zapisany w folderze 'data'.")
 
 # Zapisanie modelu do pliku
-joblib.dump(best_dt, "models/decision_tree_model_optimized.pkl")
-print("Model zapisany jako 'decision_tree_model_optimized.pkl'")
+joblib.dump(best_dt, "models/optimized_decision_tree_model.pkl")
+print("Model zapisany jako 'optimized_decision_tree_model_optimized.pkl'")

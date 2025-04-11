@@ -6,9 +6,13 @@ Aby skorzystać z funkcjonalności należy uruchomić aplikacje (plik app) i wys
 
 ## Dane domyślne 
 
+---
+
 Konfiguracja domyślna wykorzystuje dane testowe do przetestowania wszystkich trzech modelów i aby ją uruchomić należy wysłać metodą <code> POST</code> pustą zawartość <code> JSON </code>
 
 ## Dane urzytkownika
+
+---
 
 Podając jako zawartość <code> JSON</code> dane pasażera oraz medote którą chcemy wykorzystać możemy wykorzystać model do wykonania predykcji z wykorzystaniem własnych danych
 

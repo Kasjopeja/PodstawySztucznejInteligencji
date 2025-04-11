@@ -23,22 +23,25 @@ Zbiór ten zawiera informacje o pasażerach statku Titanic i służy do budowy m
 
 ## Wstępna analiza danych
 
+---
+
 Najpierw przygotowaliśmy dane do czyszczenia robiąc ich wstępną analizę.
 
 
 Na potrzeby czyszczenia danych najpierw wykonano ich eksplorację. Zbiór zawiera informacje o **891 pasażerach** i **12 zmiennych**.
 
-![Zrzut ekranu 2025-04-08 224441.png](images/Zrzut%20ekranu%202025-04-08%20224441.png)
-![Zrzut ekranu 2025-04-08 224514.png](images/Zrzut%20ekranu%202025-04-08%20224514.png)
+![Zrzut ekranu 2025-04-08 224441.png](../images/Zrzut%20ekranu%202025-04-08%20224441.png)
+![Zrzut ekranu 2025-04-08 224514.png](../images/Zrzut%20ekranu%202025-04-08%20224514.png)
+
 Analiza braków danych wykazała:
 - **177 brakujących wartości** w kolumnie `Age` (wiek),
 - **687 braków w `Cabin`**, co stanowi ponad 77% danych – kolumnę zdecydowano się usunąć,
 - **2 braki w `Embarked`** – możliwe do uzupełnienia.
 
-![Zrzut ekranu 2025-04-08 224524.png](images/Zrzut%20ekranu%202025-04-08%20224524.png)
+![Zrzut ekranu 2025-04-08 224524.png](../images/Zrzut%20ekranu%202025-04-08%20224524.png)
 
 Wiek pasażerów ma **asymetryczny rozkład prawostronny** – najwięcej osób znajduje się w przedziale 20–30 lat. Widoczna jest również grupa małych dzieci.
-![Zrzut ekranu 2025-04-08 224544.png](images/Zrzut%20ekranu%202025-04-08%20224544.png)
+![Zrzut ekranu 2025-04-08 224544.png](../images/Zrzut%20ekranu%202025-04-08%20224544.png)
 
 
 W macierzy korelacji zauważono kilka interesujących zależności:
@@ -47,9 +50,11 @@ W macierzy korelacji zauważono kilka interesujących zależności:
 - `Fare` wykazuje **dodatnią korelację z przeżyciem** (~0.26), co może być związane z klasą podróży.
 - `SibSp` i `Parch` są umiarkowanie skorelowane (0.41), co może świadczyć o podróżujących rodzinach.
 
-![Zrzut ekranu 2025-04-08 224551.png](images/Zrzut%20ekranu%202025-04-08%20224551.png)
+![Zrzut ekranu 2025-04-08 224551.png](../images/Zrzut%20ekranu%202025-04-08%20224551.png)
 
 ## Czyszczenie danych
+
+---
 
 Proces czyszczenia danych obejmował następujące kroki:
 
@@ -72,4 +77,4 @@ Proces czyszczenia danych obejmował następujące kroki:
 
 Sprawdzono, czy wszystkie brakujące wartości zostały poprawnie uzupełnione.Dane zostały zapisane do nowych plików: `train_clean.csv` oraz `test_clean.csv`.
 
-![Zrzut ekranu 2025-04-08 224252.png](images/Zrzut%20ekranu%202025-04-08%20224252.png)
+![Zrzut ekranu 2025-04-08 224252.png](../images/Zrzut%20ekranu%202025-04-08%20224252.png)
